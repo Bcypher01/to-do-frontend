@@ -1,3 +1,7 @@
 export default function Home() {
-  return <div className="border shadow-lg p-4">Main</div>;
+  return (
+    <div className="border shadow-md p-4">
+      <h1 className="font-semibold text-xl">ALL TASKS</h1>
+    </div>
+  );
 }
