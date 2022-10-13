@@ -44,7 +44,7 @@ const Nav = () => {
             </span>
             <span>DUE TODAY</span>
           </li>
-          <li className="flex space-x-2 hover:bg-gray-200 hover:cursor-pointer text-sm rounded-sm p-2 mr-4 text-slate-400 font-semibold">
+          <li className="flex space-x-2 hover:bg-gray-200 hover:text-black hover:cursor-pointer text-sm rounded-sm p-2 mr-4 text-slate-400 font-semibold">
             <span>
               <svg
                 width="20"
@@ -61,7 +61,7 @@ const Nav = () => {
             </span>
             <span>IN PROGRESS</span>
           </li>
-          <li className="flex space-x-2 hover:bg-gray-200 hover:cursor-pointer text-sm rounded-sm p-2 mr-4 text-slate-400 font-semibold">
+          <li className="flex space-x-2 hover:bg-gray-200 hover:text-black hover:cursor-pointer text-sm rounded-sm p-2 mr-4 text-slate-400 font-semibold">
             <span>
               {/* <!-- Generator: Adobe Illustrator 23.0.3, SVG Export Plug-In . SVG Version: 6.00 Build 0)  --> */}
               <svg
