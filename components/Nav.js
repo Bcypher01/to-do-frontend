@@ -60,6 +60,11 @@ const Nav = () => {
               </svg>
             </span>
             <span>IN PROGRESS</span>
+            <div className="flex flex-col justify-center align-center text-xs">
+              <aside className="text-center ml-2 text-white font-bold">
+                <span className="py-1 px-2 rounded-full bg-red-500">2</span>
+              </aside>
+            </div>
           </li>
           <li className="flex space-x-2 hover:bg-gray-200 hover:text-black hover:cursor-pointer text-sm rounded-sm p-2 mr-4 text-slate-400 font-semibold">
             <span>
