@@ -5,11 +5,13 @@ const Layout = ({ children }) => {
   return (
     <div className="container px-32 mx-auto">
       <Header />
+
+      <h1 className="text-3xl pt-6 pb-4">Tasks</h1>
       <div className="flex">
-        <div className="w-3/12">
+        <div className="w-2/12">
           <Nav />
         </div>
-        <main className="w-9/12">{children}</main>
+        <main className="w-10/12">{children}</main>
       </div>
     </div>
   );
