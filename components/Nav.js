@@ -67,7 +67,7 @@ const Nav = () => {
             <span>IN PROGRESS</span>
             <div className="flex flex-col justify-center align-center text-xs">
               <aside className="text-center ml-2 text-white font-bold">
-                <span className="py-1 px-2 rounded-full bg-red-500">2</span>
+                <span className="py-1 px-2 rounded-full bg-yellow-400">1</span>
               </aside>
             </div>
           </li>
