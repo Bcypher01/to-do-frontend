@@ -14,14 +14,14 @@ const Header = () => {
             <span className="px-2 bg-slate-200 border border-gray-200 rounded-full text-slate-500">
               0 tasks
             </span>{" "}
-            scheduled for <b>Today</b>
+            scheduled for <b className="font-semibold">Today</b>
           </h1>
           <h1 className="text-xl">
             There have been{" "}
             <span className="px-2 bg-slate-200 border border-gray-200 rounded-full text-slate-500">
               4 new activities
             </span>{" "}
-            since <q className="font-semibold">Yesterday</q>
+            since <b className="font-semibold">Yesterday</b>
           </h1>
         </section>
       </div>
