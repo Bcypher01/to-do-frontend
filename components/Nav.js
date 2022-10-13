@@ -116,6 +116,11 @@ const Nav = () => {
             <span>COMPLETED</span>
           </li>
         </ul>
+        <div className="mt-6">
+          <button className="px-6 py-2 font-semibold rounded-sm border border-teal-300 hover:bg-teal-300 hover:text-white">
+            CREATE TASK
+          </button>
+        </div>
       </aside>
     </>
   );

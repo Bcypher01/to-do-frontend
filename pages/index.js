@@ -1,3 +1,3 @@
 export default function Home() {
-  return <div>Main Page</div>;
+  return <div className="border shadow-lg p-4">Main</div>;
 }
