@@ -11,14 +11,14 @@ const Header = () => {
         <section className="block pt-4 space-y-2">
           <h1 className="text-xl">
             You have{" "}
-            <span className="px-2 bg-slate-200 border border-gray-200 rounded-full text-slate-500">
+            <span className="px-2 bg-slate-200 border rounded-full text-slate-500">
               0 tasks
             </span>{" "}
             scheduled for <b className="font-semibold">Today</b>
           </h1>
           <h1 className="text-xl">
             There have been{" "}
-            <span className="px-2 bg-slate-200 border border-gray-200 rounded-full text-slate-500">
+            <span className="px-2 bg-blue-100 border rounded-full text-blue-500">
               4 new activities
             </span>{" "}
             since <b className="font-semibold">Yesterday</b>
