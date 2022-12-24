@@ -1,7 +1,7 @@
 const Header = () => {
   return (
     <div className="pt-16 pb-8">
-      <h1 className="text-6xl font-semibold pb-12">
+      <h1 className="text-4xl lg:text-6xl font-semibold pb-6 lg:pb-12">
         Good Morning, <span className="text-teal-300">Andrew!</span>
       </h1>
       <div className="pl-4">
