@@ -38,7 +38,7 @@ const FilterBtn = () => {
           <li>
             <a
               href="#"
-              className="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+              className="block py-2 px-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
             >
               All Tasks
             </a>
@@ -46,7 +46,7 @@ const FilterBtn = () => {
           <li>
             <a
               href="#"
-              className="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+              className="block py-2 px-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
             >
               Due Today
             </a>
@@ -54,7 +54,7 @@ const FilterBtn = () => {
           <li>
             <a
               href="#"
-              className="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+              className="block py-2 px-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
             >
               In Progress
             </a>
@@ -62,7 +62,7 @@ const FilterBtn = () => {
           <li>
             <a
               href="#"
-              className="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+              className="block py-2 px-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
             >
               Completed
             </a>
