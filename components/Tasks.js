@@ -17,7 +17,7 @@ const Tasks = ({ task }) => {
           style={{ width: `${task.progress}%` }}
         ></div>
       </div>
-      <div className="flex space-x-2">
+      <div className="flex space-x-2 my-2">
         <svg
           viewBox="0 0 64 64"
           xmlns="http://www.w3.org/2000/svg"
