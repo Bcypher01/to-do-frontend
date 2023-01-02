@@ -23,7 +23,7 @@ const Nav = () => {
                   <g
                     id="56.-Flag"
                     stroke="none"
-                    stroke-width="1"
+                    strokeWidth="1"
                     fill="none"
                     fillRule="evenodd"
                     strokeLinecap="round"
@@ -32,7 +32,7 @@ const Nav = () => {
                     <g
                       transform="translate(7.000000, 2.000000)"
                       stroke="#222F3E"
-                      stroke-width="4"
+                      strokeWidth="4"
                     >
                       <path d="M7,14 L7,95.5" id="Layer-1"></path>
                       <polyline
