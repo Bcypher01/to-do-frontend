@@ -8,14 +8,13 @@ const Tasks = ({ task }) => {
           <h1 className="text-2xl">{task.name}</h1>
         </span>
         <span className="text-sm font-medium text-blue-700 dark:text-white">
-          {task.progress}%
+          {task.percentage}%
         </span>
       </div>
       <div className="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
         <div
           className="bg-blue-700 h-2 rounded-full"
-          style={{ width: `${task.progress}%` }}
-        ></div>
+          style={{ width: `${task.progress}%` }}></div>
       </div>
       <div className="flex space-x-2 my-2">
         <svg
@@ -24,8 +23,7 @@ const Tasks = ({ task }) => {
           strokeWidth="0.576"
           stroke="#808080"
           fill="none"
-          className="w-6 h-6"
-        >
+          className="w-6 h-6">
           <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
           <g id="SVGRepo_iconCarrier">
             <rect
@@ -33,8 +31,7 @@ const Tasks = ({ task }) => {
               y="9.59"
               width="44.82"
               height="44.82"
-              rx="2.5"
-            ></rect>
+              rx="2.5"></rect>
             <line x1="9.59" y1="20.59" x2="54.41" y2="20.59"></line>
             <line x1="19.7" y1="9.59" x2="19.7" y2="4.59"></line>
             <line x1="43.66" y1="9.59" x2="43.66" y2="4.59"></line>
@@ -47,7 +44,7 @@ const Tasks = ({ task }) => {
           </g>
         </svg>
         <small className="text-gray-700 font-semibold">
-          {Date(task.due_date).slice(0, 15)}
+          {Date(task.created_on).slice(0, 15)}
         </small>
       </div>
     </div>
