@@ -21,9 +21,6 @@ export default function Login() {
       validationSchema={LoginSchema}
       onSubmit={(values) => {
         // same shape as initial values
-        const headers = {
-          "Access-Control-Allow-Origin": "*",
-        };
         axios
           .post("https://todo-api-m08h.onrender.com/auth/login/", {
             email: values.email,

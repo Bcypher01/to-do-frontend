@@ -6,6 +6,7 @@ import Cookies from "js-cookie";
 
 function Home() {
   const [tasks, setTasks] = useState([]);
+  const [errorMessage, setErrorMessage] = useState("");
   useEffect(() => {
     const token = Cookies.get("token");
     const headers = {
@@ -23,7 +24,6 @@ function Home() {
         if (error.response) {
           // The request was made and the server responded with a status code
           // that falls out of the range of 2xx
-          setLoading(false);
           let err = error.response.data;
           setErrorMessage(err.message);
         }

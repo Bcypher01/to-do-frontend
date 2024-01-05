@@ -3,10 +3,10 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { server } from "../config";
 import { Formik, Field } from "formik";
+import Cookies from "js-cookie";
 
 const CreateTaskForm = () => {
   const [startDate, setStartDate] = useState(new Date());
-
   return (
     <>
       <Formik
@@ -25,27 +25,27 @@ const CreateTaskForm = () => {
           if (items) {
             let data = JSON.parse(localStorage.getItem("items"));
 
-            data.push(values);
-
             localStorage.setItem("items", JSON.stringify(data));
           } else {
             localStorage.setItem("items", JSON.stringify(values));
           }
-          // const requestOptions = {
-          //   method: "POST",
-          //   headers: { "Content-Type": "application/json" },
-          //   body: values,
-          // };
-          // fetch(`${server}/api/todo/`, requestOptions)
-          //   .then((response) => console.log(response))
-          //   .catch((error) => console.log(error));
-          // setTimeout(() => {
-          //   alert(JSON.stringify(values, null, 2));
-          //   setSubmitting(false);
-          // }, 400);
+          const token = Cookies.get("token");
+          const requestOptions = {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`,
+            },
+            body: JSON.stringify(values),
+          };
+          fetch("https://todo-api-m08h.onrender.com/tasks/", requestOptions)
+            .then((response) => console.log(response))
+            .catch((error) => console.log(error));
+          setTimeout(() => {
+            setSubmitting(false);
+          }, 400);
           console.log(values);
-        }}
-      >
+        }}>
         {({ values, handleChange, handleSubmit, isSubmitting }) => (
           <form onSubmit={handleSubmit}>
             <div className="relative z-0 mb-6 w-full group">
@@ -60,16 +60,14 @@ const CreateTaskForm = () => {
               />
               <label
                 htmlFor="name"
-                className="peer-focus:font-medium absolute text-md text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-              >
+                className="peer-focus:font-medium absolute text-md text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
                 Name
               </label>
             </div>
 
             <label
               className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-              htmlFor="grid-state"
-            >
+              htmlFor="grid-state">
               Status
             </label>
             <div className="relative">
@@ -77,8 +75,7 @@ const CreateTaskForm = () => {
                 as="select"
                 className="block appearance-none w-full bg-gray-100 border border-gray-100 text-gray-700 py-2 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                 id="grid-state"
-                name="status"
-              >
+                name="status">
                 <option value="2">In Progress</option>
                 <option value="3">Pending</option>
               </Field>
@@ -86,8 +83,7 @@ const CreateTaskForm = () => {
                 <svg
                   className="fill-current h-4 w-4"
                   xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 20 20"
-                >
+                  viewBox="0 0 20 20">
                   <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
                 </svg>
               </div>
@@ -102,8 +98,7 @@ const CreateTaskForm = () => {
 
             <button
               type="submit"
-              className="px-8 py-2 text-white font-semibold bg-teal-300"
-            >
+              className="px-8 py-2 text-white font-semibold bg-teal-300">
               Submit
             </button>
           </form>
