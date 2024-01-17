@@ -1,18 +1,44 @@
-import { useState } from "react";
+// "use client";
+import { useParams } from "next/navigation";
+import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { useRouter } from "next/router";
-import { server } from "../config";
 import { Formik, Field } from "formik";
 import Cookies from "js-cookie";
+import axios from "axios";
 
-const CreateTaskForm = () => {
-  const [startDate, setStartDate] = useState(new Date());
+const Edit = () => {
+  const params = useParams();
   const router = useRouter();
+  const [task, setTask] = useState([]);
+  const [startDate, setStartDate] = useState(new Date());
+  const token = Cookies.get("token");
+
+  useEffect(() => {
+    axios
+      .get(`https://todo-api-m08h.onrender.com/tasks/${params.id}/`, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((response) => {
+        setTask(response.data);
+      })
+      .catch((error) => console.log(error));
+  }, []);
+
   return (
     <>
       <Formik
-        initialValues={{ name: "", status: "1", date: startDate }}
+        enableReinitialize
+        initialValues={{
+          name: task.name,
+          status: "1",
+          percentage: task.percentage,
+          date: startDate,
+        }}
         validate={(values) => {
           const errors = {};
           if (!values.name) {
@@ -31,16 +57,18 @@ const CreateTaskForm = () => {
           } else {
             localStorage.setItem("items", JSON.stringify(values));
           }
-          const token = Cookies.get("token");
           const requestOptions = {
-            method: "POST",
+            method: "PUT",
             headers: {
               "Content-Type": "application/json",
               Authorization: `Bearer ${token}`,
             },
             body: JSON.stringify(values),
           };
-          fetch("https://todo-api-m08h.onrender.com/tasks/", requestOptions)
+          fetch(
+            `https://todo-api-m08h.onrender.com/tasks/${params.id}/`,
+            requestOptions
+          )
             .then(() => {
               router.push("/");
             })
@@ -52,20 +80,20 @@ const CreateTaskForm = () => {
         {({ values, handleChange, handleSubmit, isSubmitting }) => (
           <form onSubmit={handleSubmit}>
             <div className="relative z-0 mb-6 w-full group">
+              <label
+                className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                htmlFor="grid-state">
+                Name
+              </label>
               <input
                 type="name"
                 name="name"
                 value={values.name}
-                className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                className="block py-2.5 px-2 w-full text-sm text-gray-900 bg-transparent border rounded"
                 placeholder=" "
                 onChange={handleChange}
                 required
               />
-              <label
-                htmlFor="name"
-                className="peer-focus:font-medium absolute text-md text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
-                Name
-              </label>
             </div>
 
             <label
@@ -73,7 +101,7 @@ const CreateTaskForm = () => {
               htmlFor="grid-state">
               Status
             </label>
-            <div className="relative">
+            <div className="relative mb-6">
               <Field
                 as="select"
                 className="block appearance-none w-full bg-gray-100 border border-gray-100 text-gray-700 py-2 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
@@ -91,6 +119,26 @@ const CreateTaskForm = () => {
                 </svg>
               </div>
             </div>
+
+            <label
+              className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+              htmlFor="grid-state">
+              Progress
+            </label>
+            <div className="relative mb-6">
+              <input
+                type="range"
+                min="0"
+                max="100"
+                name="percentage"
+                value={values.percentage}
+                className="block py-2.5 px-2 w-full text-sm text-gray-900 bg-transparent border rounded"
+                placeholder="Progress(%)"
+                onChange={handleChange}
+                required
+              />
+            </div>
+
             <div className="my-6">
               <DatePicker
                 className="border rounded px-2 py-1"
@@ -111,4 +159,4 @@ const CreateTaskForm = () => {
   );
 };
 
-export default CreateTaskForm;
+export default Edit;
