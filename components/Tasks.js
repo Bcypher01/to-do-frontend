@@ -1,11 +1,11 @@
 import Link from "next/link";
 
-const Tasks = ({ task }) => {
+const Tasks = ({ task, setActive, setOpen }) => {
   return (
-    <div className="my-5">
+    <div className="mt-5  animate-fade-down animate-delay-200 animate-once">
       <div className="flex justify-between mb-2">
         <span className="flex space-x-4 text-base font-medium dark:text-white">
-          <h1 className="text-2xl">{task.name}</h1>
+          <h1 className="text-xl md:text-2xl">{task.name}</h1>
         </span>
         <div className="space-x-3">
           <span className="text-sm font-medium text-blue-700 dark:text-white pt-2">
@@ -26,6 +26,23 @@ const Tasks = ({ task }) => {
               </svg>
             </button>
           </Link>
+          <button
+            type="button"
+            className="rounded bg-red-500 p-1 hover:bg-red-400"
+            onClick={() => {
+              setOpen(true);
+              setActive(task.id);
+            }}>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              x="0px"
+              y="0px"
+              width="15"
+              height="15"
+              viewBox="0 0 50 50">
+              <path d="M 7.7070312 6.2929688 L 6.2929688 7.7070312 L 23.585938 25 L 6.2929688 42.292969 L 7.7070312 43.707031 L 25 26.414062 L 42.292969 43.707031 L 43.707031 42.292969 L 26.414062 25 L 43.707031 7.7070312 L 42.292969 6.2929688 L 25 23.585938 L 7.7070312 6.2929688 z"></path>
+            </svg>
+          </button>
         </div>
       </div>
       <div className="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">

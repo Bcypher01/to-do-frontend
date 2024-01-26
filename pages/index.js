@@ -24,21 +24,22 @@ function Home() {
         setLoading(false);
         setTasks(res);
       })
-      .catch(function (error) {
-        if (error.response) {
-          // The request was made and the server responded with a status code
-          // that falls out of the range of 2xx
-          setLoading(false);
-          let err = error.response.data;
-          setErrorMessage(err.message);
-        }
+      .catch(() => {
+        // The request was made and the server responded with a status code
+        // that falls out of the range of 2xx
+        setLoading(false);
+        setErrorMessage(
+          "Something went wrong, it's our fault.Please refresh the page"
+        );
       });
   }, [currentPage]);
 
   return (
     <TaskList
       tasks={tasks}
+      setTasks={setTasks}
       loading={loading}
+      error={errorMessage}
       currentPage={currentPage}
       setCurrentPage={setCurrentPage}
     />

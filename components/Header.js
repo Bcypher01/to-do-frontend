@@ -8,10 +8,10 @@ const Header = () => {
   }, []);
   return (
     <div className="pt-16 pb-8">
-      <h1 className="text-4xl lg:text-6xl font-semibold pb-6 lg:pb-12">
+      <h1 className="text-4xl lg:text-6xl font-semibold pb-6 lg:pb-12 animate-fade-left animate-delay-200 animate-once">
         Good Morning, <span className="text-teal-300">{user.username}!</span>
       </h1>
-      <div className="pl-4">
+      <div className="pl-4 animate-fade-down animate-delay-200 animate-once">
         <small className="text-slate-400">
           Here is your today&apos;s briefing:
         </small>
